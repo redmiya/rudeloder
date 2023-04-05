@@ -28,8 +28,8 @@ fn extract_encrypted_code(filepath: &str) -> std::io::Result<Vec<u8>> {
     let mut buffer = Vec::new();
     file.read_to_end(&mut buffer)?;
 
-    let marker = b"CODE"; // Code Embedded WAV file including marker of like "CODE" means Starting EmbedCode
-    let end_marker = b"ENDCODE"; // Also "ENDCODE" means Ending EmbedCode
+    let marker = b"CODE"; // Embedded WAV-file indicating a marker like "CODE" means start of embedded code
+    let end_marker = b"ENDCODE"; // Also "ENDCODE" means end of embedded Code
     let marker_position = buffer
         .windows(marker.len())
         .position(|window| window == marker)
